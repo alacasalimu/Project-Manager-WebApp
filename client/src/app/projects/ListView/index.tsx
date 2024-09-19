@@ -8,7 +8,7 @@ type Props = {
   setIsModalNewTaskOpen: (isOpen: boolean) => void;
 };
 
-const index = ({ id, setIsModalNewTaskOpen }: Props) => {
+const ListView = ({ id, setIsModalNewTaskOpen }: Props) => {
   const {
     data: tasks,
     error,
@@ -30,4 +30,4 @@ const index = ({ id, setIsModalNewTaskOpen }: Props) => {
   );
 };
 
-export default index;
+export default ListView;
