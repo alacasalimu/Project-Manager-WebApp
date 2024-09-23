@@ -20,7 +20,6 @@ const BoardView = ({ id, setIsModalNewTaskOpen }: BoardProps) => {
     isLoading,
     error,
   } = useGetTasksQuery({ projectId: Number(id) });
-
   const [updateTaskStatus] = useUpdateTaskStatusMutation();
 
   const moveTask = (taskId: number, toStatus: string) => {
@@ -104,7 +103,7 @@ const TaskColumn = ({
               <EllipsisVertical size={26} />
             </button>
             <button
-              className="dark: flex h-6 w-6 items-center justify-center rounded bg-gray-200 text-white dark:bg-dark-tertiary"
+              className="flex h-6 w-6 items-center justify-center rounded bg-gray-200 dark:bg-dark-tertiary dark:text-white"
               onClick={() => setIsModalNewTaskOpen(true)}
             >
               <Plus size={16} />
@@ -140,7 +139,6 @@ const Task = ({ task }: TaskProps) => {
   const formattedStartDate = task.startDate
     ? format(new Date(task.startDate), "P")
     : "";
-
   const formattedDueDate = task.dueDate
     ? format(new Date(task.dueDate), "P")
     : "";
@@ -174,9 +172,9 @@ const Task = ({ task }: TaskProps) => {
         isDragging ? "opacity-50" : "opacity-100"
       }`}
     >
-      {task.attachments && task.attachments?.length > 0 && (
+      {task.attachments && task.attachments.length > 0 && (
         <Image
-          src={`/${task.attachments[0].fileURL}`}
+          src={`https://pm-s3-images.s3.us-east-2.amazonaws.com/${task.attachments[0].fileURL}`}
           alt={task.attachments[0].fileName}
           width={400}
           height={200}
@@ -185,7 +183,7 @@ const Task = ({ task }: TaskProps) => {
       )}
       <div className="p-4 md:p-6">
         <div className="flex items-start justify-between">
-          <div className="itesm-center flex flex-1 flex-wrap gap-2">
+          <div className="flex flex-1 flex-wrap items-center gap-2">
             {task.priority && <PriorityTag priority={task.priority} />}
             <div className="flex gap-2">
               {taskTagsSplit.map((tag) => (
@@ -228,7 +226,7 @@ const Task = ({ task }: TaskProps) => {
             {task.assignee && (
               <Image
                 key={task.assignee.userId}
-                src={`/${task.assignee.profilePictureUrl!}`}
+                src={`https://pm-s3-images.s3.us-east-2.amazonaws.com/${task.assignee.profilePictureUrl!}`}
                 alt={task.assignee.username}
                 width={30}
                 height={30}
@@ -238,7 +236,7 @@ const Task = ({ task }: TaskProps) => {
             {task.author && (
               <Image
                 key={task.author.userId}
-                src={`/${task.author.profilePictureUrl!}`}
+                src={`https://pm-s3-images.s3.us-east-2.amazonaws.com/${task.author.profilePictureUrl!}`}
                 alt={task.author.username}
                 width={30}
                 height={30}
