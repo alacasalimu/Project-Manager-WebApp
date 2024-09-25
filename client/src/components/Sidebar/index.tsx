@@ -178,7 +178,7 @@ const Sidebar = () => {
             {currentUserDetails?.username}
           </span>
           <button
-            className="self-start rounded bg-blue-400 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500"
+            className="md-block self-start rounded bg-blue-400 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500"
             onClick={handleSignOut}
           >
             Sign Out
