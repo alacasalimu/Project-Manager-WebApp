@@ -31,7 +31,7 @@ export const createProject = async (
         endDate,
       },
     });
-    res.json(201).json(newProject);
+    res.status(201).json(newProject);
   } catch (error: any) {
     res
       .status(500)

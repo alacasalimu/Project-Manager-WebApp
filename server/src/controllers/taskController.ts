@@ -58,7 +58,7 @@ export const createTask = async (
         assignedUserId,
       },
     });
-    res.json(201).json(newTask);
+    res.status(201).json(newTask);
   } catch (error: any) {
     res
       .status(500)
